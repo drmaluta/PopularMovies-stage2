@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">Popular Movies</string>
+    <string name="sort_by">Sort By</string>
+    <string name="sort_pop">Popular Movies</string>
+    <string name="sort_rating">Top Rated</string>
+    <string name="key_sort_pop" translatable="false">popular</string>
+    <string name="key_sort_rating" translatable="false">top rated</string>
+    <string name="pref_key" translatable="false">sort by</string>
+    <string name="pref_default">@string/key_sort_pop</string>
+    <string name="nav_reload">Reload</string>
+    <string name="movie_parcel">PARCEL_MOVIE</string>
+    <string name="todo">TODO</string>
+    <string name="vote_average">4.0 / 5.0</string>
+    <string name="votes">1000 votes</string>
+    <string name="brief">Black Panther</string>
+    <string name="title">After the death of his father, T\'Challa returns home to the African nation of Wakanda to take his rightful place as king. When a powerful enemy suddenly reappears, T\'Challa\'s mettle as king — and as Black Panther — gets tested when he's drawn into a conflict that puts the fate of Wakanda </string>
+    <string name="date">Release Date</string>
+    <string name="released">February 16, 2018</string>
+    <string name="release_date_error">Error while loading Date</string>
+    <string name="no_date_found">No date found</string>
+    <string name="no_overview_available">No Description Available</string>
 </resources>

@@ -12,6 +12,7 @@ public class Movie implements Parcelable {
     private String overview;
     private Double userRating;
     private String releaseDate;
+    private long voteCount;
     private static final String MOVIE_TMDB_URL = "https://image.tmdb.org/t/p/w185";
     private static final String Date_TMDB = "yyyy-MM-dd";
 
@@ -38,6 +39,14 @@ public class Movie implements Parcelable {
         return overview;
     }
 
+    public long getVoteCount() {
+        return voteCount;
+    }
+
+    public void setVoteCount(long voteCount) {
+        this.voteCount = voteCount;
+    }
+
     /**
      *
      * @return the date format
@@ -45,6 +54,16 @@ public class Movie implements Parcelable {
     public String getDateFormat(){
 
         return Date_TMDB;
+    }
+
+    public String getRatingAverage(){
+
+        return String.valueOf(getUserRating()) + "/10";
+
+    }
+
+    public String getMovieVotes() {
+        return String.valueOf(getVoteCount() + " Votes");
     }
 
     public void setOverview(String overview) {
@@ -91,6 +110,7 @@ public class Movie implements Parcelable {
         dest.writeString(overview);
         dest.writeString(releaseDate);
         dest.writeValue(userRating);
+        dest.writeValue(voteCount);
     }
 
     private Movie(Parcel in){
@@ -99,6 +119,7 @@ public class Movie implements Parcelable {
         overview = in.readString();
         releaseDate = in.readString();
         userRating = (double) in.readValue(double.class.getClassLoader());
+        voteCount = (long) in.readValue(long.class.getClassLoader());
 
 
     }

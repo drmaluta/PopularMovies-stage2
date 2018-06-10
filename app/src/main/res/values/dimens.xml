@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="tmdb_poster_width">135dp</dimen>
+    <dimen name="tmdb_poster_height">198dp</dimen>
+    <dimen name="sixteen_dp">16dp</dimen>
+    <dimen name="text_size">16sp</dimen>
+</resources>

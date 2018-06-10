@@ -4,8 +4,6 @@ package com.maluta.popularmovies.utils;
  * Created by admin on 6/4/2018.
  */
 
-import android.util.Log;
-
 import com.maluta.popularmovies.model.Movie;
 
 import org.json.JSONArray;
@@ -14,15 +12,16 @@ import org.json.JSONObject;
 
 public class JsonUtils {
     private static final String TAG = JsonUtils.class.getName();
-    final String KEY_RESULTS = "results";
-    final String KEY_ORIGINAL_TITLE = "original_title";
-    final String KEY_POSTER_PATH = "poster_path";
-    final String KEY_OVERVIEW = "overview";
-    final String KEY_VOTE_AVERAGE = "vote_average";
-    final String KEY_RELEASE_DATE = "release_date";
+    private static final String KEY_RESULTS = "results";
+    private static final String KEY_ORIGINAL_TITLE = "original_title";
+    private static final String KEY_POSTER_PATH = "poster_path";
+    private static final String KEY_OVERVIEW = "overview";
+    private static final String KEY_VOTE_AVERAGE = "vote_average";
+    private static final String KEY_RELEASE_DATE = "release_date";
+    private static final String KEY_VOTE_COUNT = "vote_count";
 
-    public Movie[] getMovieFromJson(String json) throws JSONException{
-        // Get the array containing hte movies found
+    public static Movie[] getMovieFromJson(String json) throws JSONException{
+        // Get the array containing the movies found
         JSONObject moviesJson = new JSONObject(json);
         JSONArray resultsArray = moviesJson.getJSONArray(KEY_RESULTS);
 
@@ -42,6 +41,7 @@ public class JsonUtils {
             movies[i].setOverview(movieInfo.getString(KEY_OVERVIEW));
             movies[i].setUserRating(movieInfo.getDouble(KEY_VOTE_AVERAGE));
             movies[i].setReleaseDate(movieInfo.getString(KEY_RELEASE_DATE));
+            movies[i].setVoteCount(movieInfo.getLong(KEY_VOTE_COUNT));
         }
         return movies;
     }
