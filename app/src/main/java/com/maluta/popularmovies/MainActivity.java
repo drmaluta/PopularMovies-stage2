@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
     final String OTHER_TYPE = "other";
     private String movieType = "normal type";
     private String title = "";
+    private String MOVIE_TYPE_EXTRA = "movie_type";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,10 +98,11 @@ public class MainActivity extends AppCompatActivity {
                 loadMovieData(this, movieType);
             }
         } else {
-            ArrayList<Movie> parcelable = savedInstanceState.
+            mMovies = savedInstanceState.
                     getParcelableArrayList(getString(R.string.movie_parcel));
-            if (parcelable != null) {
-                mAdapter.setData(parcelable);
+            movieType = savedInstanceState.getString(MOVIE_TYPE_EXTRA);
+            if (mMovies != null && !movieType.equals(FAVORITE_TYPE)) {
+                mAdapter.setData(mMovies);
                 mGridView.setAdapter(mAdapter);
             }
 
@@ -167,6 +169,7 @@ public class MainActivity extends AppCompatActivity {
                 movies.add((Movie) mGridView.getItemAtPosition(i));
             }
             outState.putParcelableArrayList(getString(R.string.movie_parcel), movies);
+            outState.putString(MOVIE_TYPE_EXTRA, movieType);
             outState.putString("title", title);
         }
 
@@ -218,10 +221,11 @@ public class MainActivity extends AppCompatActivity {
         viewModel.getFavoriteMovies().observe(this, new Observer<List<Movie>>() {
             @Override
             public void onChanged(@Nullable List<Movie> movies) {
+                mMovies = (ArrayList<Movie>) movies;
                 mFavoriteMovies = movies;
                 if (movieType.equals(FAVORITE_TYPE)) {
                     Log.d(LOG_TAG, "Updating list of favorite movies from LiveData in ViewModel");
-                    mAdapter.setData((ArrayList<Movie>) movies);
+                    mAdapter.setData(mMovies);
                     mGridView.setAdapter(mAdapter);
                 }
             }
