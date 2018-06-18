@@ -97,10 +97,10 @@ public class MainActivity extends AppCompatActivity {
                 loadMovieData(this, movieType);
             }
         } else {
-            mMovies = savedInstanceState.
+            ArrayList<Movie> parcelable = savedInstanceState.
                     getParcelableArrayList(getString(R.string.movie_parcel));
-            if (mMovies != null) {
-                mAdapter.setData(mMovies);
+            if (parcelable != null) {
+                mAdapter.setData(parcelable);
                 mGridView.setAdapter(mAdapter);
             }
 
