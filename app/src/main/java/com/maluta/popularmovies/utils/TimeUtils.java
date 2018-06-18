@@ -15,15 +15,17 @@ import java.util.Locale;
 
 public class TimeUtils {
 
+    private static final String Date_TMDB = "yyyy-MM-dd";
+
     private static Date getDate(String date,String format) throws ParseException {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(format, Locale.US);
 
         return simpleDateFormat.parse(date);
     }
 
-    public static String getLocalizedDate(Context context,String date,String format) throws ParseException {
+    public static String getLocalizedDate(Context context,String date) throws ParseException {
         DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(context);
 
-        return dateFormat.format(getDate(date, format));
+        return dateFormat.format(getDate(date, Date_TMDB));
     }
 }

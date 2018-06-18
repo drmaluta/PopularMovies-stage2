@@ -10,40 +10,40 @@ import com.maluta.popularmovies.R;
 import com.maluta.popularmovies.model.Movie;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+
 /**
  * Created by admin on 6/4/2018.
  */
 
 public class MovieAdapter extends BaseAdapter {
-    public  Movie[] mMovies;
-    public Context mContext;
+    private Context mContext;
+    private ArrayList<Movie> mMovies;
 
-    /**
-     * my constructor takes two parameters
-     * <p/>
-     * @param context the context
-     * @param movies movies from my model movie
-     */
-    public  MovieAdapter(Context context, Movie[] movies){
 
-        mMovies = movies;
+    public  MovieAdapter(Context context){
         mContext = context;
+    }
+
+    public void setData(ArrayList<Movie> movies) {
+        mMovies = movies;
+        notifyDataSetChanged();
     }
 
     @Override
     public int getCount() {
-        if(mMovies == null || mMovies.length == 0){
+        if(mMovies == null || mMovies.size() == 0){
             return 0;
         }
-        return mMovies.length;
+        return mMovies.size();
     }
 
     @Override
     public Object getItem(int position) {
-        if(mMovies == null || mMovies.length== 0){
+        if(mMovies == null || mMovies.size()== 0){
             return  null;
         }
-        return mMovies[position];
+        return mMovies.get(position);
     }
 
     @Override
@@ -62,7 +62,7 @@ public class MovieAdapter extends BaseAdapter {
             movieImageView = (ImageView) convertView;
         }
         Picasso.with(mContext)
-                .load(mMovies[position].getPosterPath())
+                .load("https://image.tmdb.org/t/p/w185" + mMovies.get(position).getPosterPath())
                 .resize(187,285)
                 .error(R.drawable.alert_circle_outline)//when we get an error
                 .placeholder(R.drawable.loading)// as the image loads

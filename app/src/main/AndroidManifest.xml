@@ -31,6 +31,10 @@
                 android:value=".MainActivity"/>
 
         </activity>
+        <activity android:name=".ReviewPopup"
+            android:theme="@style/AppTheme.CustomTheme">
+
+        </activity>
     </application>
 
 </manifest>

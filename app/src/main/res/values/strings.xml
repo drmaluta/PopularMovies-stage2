@@ -7,8 +7,9 @@
     <string name="key_sort_rating" translatable="false">top rated</string>
     <string name="pref_key" translatable="false">sort by</string>
     <string name="pref_default">@string/key_sort_pop</string>
-    <string name="nav_reload">Reload</string>
+    <string name="nav_favorite">Favorite Movies</string>
     <string name="movie_parcel">PARCEL_MOVIE</string>
+    <string name="is_favorite">IS_FAVORITE</string>
     <string name="todo">TODO</string>
     <string name="vote_average">4.0 / 5.0</string>
     <string name="votes">1000 votes</string>
@@ -19,4 +20,15 @@
     <string name="release_date_error">Error while loading Date</string>
     <string name="no_date_found">No date found</string>
     <string name="no_overview_available">No Description Available</string>
+    <string name="connection_error_title">Connection Error</string>
+    <string name="connection_error">Movies Data can not be loaded. Check for your connection.</string>
+    <string name="reload_button">Reload</string>
+    <string name="trailers">Trailers:</string>
+    <string name="type">type</string>
+    <string name="trailer_for_app">trailer for app</string>
+    <string name="reviews">Reviews:</string>
+    <string name="content_for_review">After the death of his father, T\'Challa returns home to the African nation of Wakanda to take his rightful place as king. When a powerful enemy suddenly reappears, T\'Challa\'s mettle as king — and as Black Panther — gets tested when he's drawn into a conflict that puts the fate of Wakanda </string>
+    <string name="author">Benktesh:</string>
+    <string name="review_parcel">REVIEW_MOVIE</string>
+    <string name="button">Button</string>
 </resources>

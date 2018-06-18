@@ -3,20 +3,50 @@ package com.maluta.popularmovies.model;
 /**
  * Created by admin on 6/3/2018.
  */
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
+import android.arch.persistence.room.PrimaryKey;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Movie implements Parcelable {
-    private String title;
-    private String posterPath;
-    private String overview;
-    private Double userRating;
-    private String releaseDate;
-    private long voteCount;
-    private static final String MOVIE_TMDB_URL = "https://image.tmdb.org/t/p/w185";
-    private static final String Date_TMDB = "yyyy-MM-dd";
+import com.google.gson.annotations.SerializedName;
 
+@Entity(tableName = "movie")
+public class Movie implements Parcelable {
+
+    @PrimaryKey
+    @SerializedName("id")
+    private Integer id;
+    @SerializedName("original_title")
+    private String title;
+    @SerializedName("poster_path")
+    private String posterPath;
+    @SerializedName("overview")
+    private String overview;
+    @SerializedName("vote_average")
+    private Double userRating;
+    @SerializedName("release_date")
+    private String releaseDate;
+    @SerializedName("vote_count")
+    private Integer voteCount;
+
+
+    @Ignore
     public Movie() {
+    }
+
+    public Movie(Integer id, String title, String posterPath, String overview, Double userRating, String releaseDate, Integer voteCount) {
+        this.id = id;
+        this.title = title;
+        this.posterPath = posterPath;
+        this.overview = overview;
+        this.userRating = userRating;
+        this.releaseDate = releaseDate;
+        this.voteCount = voteCount;
+    }
+
+    public Integer getId(){
+        return id;
     }
 
     public String getTitle() {
@@ -28,7 +58,7 @@ public class Movie implements Parcelable {
     }
 
     public String getPosterPath() {
-        return MOVIE_TMDB_URL + posterPath;
+        return posterPath;
     }
 
     public void setPosterPath(String posterPath) {
@@ -39,22 +69,18 @@ public class Movie implements Parcelable {
         return overview;
     }
 
-    public long getVoteCount() {
+    public Integer getVoteCount() {
         return voteCount;
     }
 
-    public void setVoteCount(long voteCount) {
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setVoteCount(Integer voteCount) {
         this.voteCount = voteCount;
     }
 
-    /**
-     *
-     * @return the date format
-     */
-    public String getDateFormat(){
-
-        return Date_TMDB;
-    }
 
     public String getRatingAverage(){
 
@@ -105,6 +131,7 @@ public class Movie implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeValue(id);
         dest.writeString(title);
         dest.writeString(posterPath);
         dest.writeString(overview);
@@ -114,13 +141,12 @@ public class Movie implements Parcelable {
     }
 
     private Movie(Parcel in){
+        id = (Integer) in.readValue(Integer.class.getClassLoader());
         title = in.readString();
         posterPath = in.readString();
         overview = in.readString();
         releaseDate = in.readString();
         userRating = (double) in.readValue(double.class.getClassLoader());
-        voteCount = (long) in.readValue(long.class.getClassLoader());
-
-
+        voteCount = (Integer) in.readValue(Integer.class.getClassLoader());
     }
 }

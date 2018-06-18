@@ -2,6 +2,12 @@
 <resources>
     <dimen name="tmdb_poster_width">135dp</dimen>
     <dimen name="tmdb_poster_height">198dp</dimen>
+    <dimen name="thirty_dp">30dp</dimen>
+    <dimen name="twenty_six_dp">26dp</dimen>
     <dimen name="sixteen_dp">16dp</dimen>
+    <dimen name="eight_dp">8dp</dimen>
     <dimen name="text_size">16sp</dimen>
+    <dimen name="trailer_vh_height">80dp</dimen>
+    <dimen name="thin_line_height">1dp</dimen>
+    <dimen name="fab_margin">8dp</dimen>
 </resources>
