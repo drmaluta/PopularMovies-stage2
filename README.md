@@ -13,4 +13,4 @@ Welcome back to Popular Movies! In this second and final stage, you’ll add add
 ### Note to the reviewer:
 
 To add your api key, add it to gradle.properties file like this:
-* **my_api="your_api_key_here"**
+* **my_api="put_your_api_key_here"**
